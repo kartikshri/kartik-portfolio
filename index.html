@@ -7,8 +7,56 @@
   <title>Kartik Shrivastav | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f5f5f5;
+    }
+
+    body.dark-mode {
+      --bg-color: #1f1f1f;
+      --text-color: #ffffff;
+      --card-bg: #2c2c2c;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .project-card, .contact, .about-me, .tab-content, .tab-section, .tabs, .tab {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    .tab-content {
+      padding: 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .tab-content.hidden {
+      display: none;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 8px 16px;
+      background-color: #00cec9;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
+  <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
   <div class="main-container">
     <section class="intro">
       <h1>Kartik Shrivastav</h1>
@@ -78,7 +126,6 @@
 
     <section class="projects">
       <h2>Projects</h2>
-
       <div class="project-card">
         <h3>🎨 Theme App (React Native)</h3>
         <p>
@@ -87,7 +134,6 @@
         <a href="https://github.com/kartikshri/myapp" target="_blank">GitHub</a>
         <br />
         <button class="watch-demo-btn" onclick="showDemoVideo()">▶️ Watch Demo</button>
-
         <div class="video-wrapper" id="video-wrapper" style="display: none;">
           <video id="demo-video" width="100%" controls autoplay>
             <source src="assets/themeapp-demo.mp4" type="video/mp4" />
@@ -96,19 +142,16 @@
           <button class="close-video-btn" onclick="hideDemoVideo()">✖ Close Video</button>
         </div>
       </div>
-
       <div class="project-card">
         <h3>📘 Book Recommendation System</h3>
         <p>ML-based engine using cosine similarity in Python.</p>
         <a href="https://github.com/kartikshri/book-recommender-system">GitHub</a>
       </div>
-
       <div class="project-card">
         <h3>🔧 Autofix – Auto Repair Service Website</h3>
         <p>Static responsive website using HTML, CSS, JS.</p>
         <a href="https://kartikshri.github.io/car_repair_interface/">Live Demo</a> | <a href="https://github.com/kartikshri/car_repair_interface">GitHub</a>
       </div>
-
       <div class="project-card">
         <h3>📜 Next Word Predictor</h3>
         <p>Built using NLP in Python for next word prediction.</p>
@@ -148,20 +191,17 @@
       document.querySelector(`.tab[onclick="showTab('${id}')"]`).classList.add('active');
     }
 
-    function showDemoVideo() {
-      const wrapper = document.getElementById('video-wrapper');
-      const video = document.getElementById('demo-video');
-      wrapper.style.display = 'block';
-      video.play();
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
     }
 
-    function hideDemoVideo() {
-      const wrapper = document.getElementById('video-wrapper');
-      const video = document.getElementById('demo-video');
-      video.pause();
-      video.currentTime = 0;
-      wrapper.style.display = 'none';
-    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzvkasC2HE5KbqDnkOv837oeeNy6mOwpf7zNRbrbzyEoBoiBa_qCTN2-dyHd0KHPoYS/exec';
     const form = document.forms['submit-to-google-sheet'];
@@ -180,6 +220,21 @@
       })
       .catch(error => console.error('Error!', error.message));
     });
+
+    function showDemoVideo() {
+      const wrapper = document.getElementById('video-wrapper');
+      const video = document.getElementById('demo-video');
+      wrapper.style.display = 'block';
+      video.play();
+    }
+
+    function hideDemoVideo() {
+      const wrapper = document.getElementById('video-wrapper');
+      const video = document.getElementById('demo-video');
+      video.pause();
+      video.currentTime = 0;
+      wrapper.style.display = 'none';
+    }
   </script>
 </body>
 </html>
