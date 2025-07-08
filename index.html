@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartik Shrivastav | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <section class="intro">
+      <h1>Kartik Shrivastav</h1>
+      <p class="tagline">Frontend & Cross-Platform Mobile Developer | ML Enthusiast | NIT Bhopal CSE Graduate
+</p>
+      <a href="assets/resume.pdf" download class="download-btn">Download CV</a>
+    </section>
+
+    <section class="about-me">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I am a recent Computer Science Engineering graduate from NIT Bhopal with hands-on experience in frontend and mobile development.
+          I recently completed an internship at Walkover Private Limited, where I contributed to building cross-platform mobile applications using React Native and Firebase.
+          I have a strong interest in UI/UX design, clean code architecture, and modern web/mobile technologies.
+          I am currently exploring freelance projects and actively seeking full-time opportunities where I can apply my skills, learn from industry experts, and grow as a developer.
+        </p>
+      </div>
+      <div class="about-photo">
+        <img src="assets/profesolnalimage.jpg" alt="Kartik Shrivastav" />
+      </div>
+    </section>
+
+    <div class="tab-section">
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('skills')">Skills</button>
+        <button class="tab" onclick="showTab('experience')">Experience</button>
+        <button class="tab" onclick="showTab('education')">Education</button>
+      </div>
+      <div class="tab-content" id="skills">
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>React Native</li>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>Firebase</li>
+          <li>Git</li>
+        </ul>
+      </div>
+      <div class="tab-content hidden" id="experience">
+        <ul>
+          <li>
+            <strong>Assistant Solution Engineer – Walkover Private Limited, Indore (Jan 2025 – Present)</strong><br />
+            • Part of the Mobile Development Team, working on cross-platform apps using React Native.<br />
+            • Developed key interfaces and dashboards for business analytics applications.<br />
+            • Integrated REST APIs to enable dynamic content updates and user interactions.<br />
+            • Worked with Firebase for authentication and backend services.<br />
+            • Collaborated with designers to implement responsive UI across devices.
+          </li>
+          <li>
+            <strong>Frontend Intern – Technofilia (2024)</strong><br />
+            • Created responsive user interfaces using HTML, CSS, and JavaScript.<br />
+            • Focused on reusable components and clean UI layouts.
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content hidden" id="education">
+        <ul>
+          <li>B.Tech CSE, NIT Bhopal</li>
+          <li>Class 12th - G.V.I.C Koraon Prayagraj</li>
+          <li>Class 10th - G.V.I.C Koraon Prayagraj</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+  <h3>🎨 Theme App (React Native)</h3>
+  <p>
+    A cross-platform mobile app built with React Native. Allows users to toggle between light and dark themes. Includes secure authentication using Firebase.
+  </p>
+  <a href="https://github.com/kartikshri/myapp" target="_blank">GitHub</a>
+</div>
+
+      <div class="project-card">
+        <h3>📘 Book Recommendation System</h3>
+        <p>ML-based engine using cosine similarity in Python.</p>
+        <a href="https://github.com/kartikshri/book-recommender-system">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>🔧 Autofix – Auto Repair Service Website</h3>
+        <p>Static responsive website using HTML, CSS, JS.</p>
+        <a href="https://kartikshri.github.io/car_repair_interface/">Live Demo</a> | <a href="https://github.com/kartikshri/car_repair_interface">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>📜 Next Word Predictor</h3>
+        <p>Built using NLP in Python for next word prediction.</p>
+        <a href="https://github.com/kartikshri/NEXT-WORD-PRIDICTION">GitHub</a>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <form name="submit-to-google-sheet">
+        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <textarea name="Message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="submit-btn">Submit</button>
+        <span id="msg"></span>
+      </form>
+      <div class="social">
+        <p>Email: kartikshrivastav2004@gmail.com</p>
+        <p>Phone: +91-8960214687</p>
+        <a href="https://www.linkedin.com/in/kartik-shrivastav-519bbb231/">LinkedIn</a> | <a href="https://github.com/kartikshri">GitHub</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Kartik Shrivastav | Built with ❤️</p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function showTab(id) {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      document.querySelector(`.tab[onclick="showTab('${id}')"]`).classList.add('active');
+    }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzvkasC2HE5KbqDnkOv837oeeNy6mOwpf7zNRbrbzyEoBoiBa_qCTN2-dyHd0KHPoYS/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById('msg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        msg.innerHTML = 'Message sent successfully!';
+        setTimeout(() => msg.innerHTML = '', 5000);
+        form.reset();
+      })
+      .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+</body>
+</html>
